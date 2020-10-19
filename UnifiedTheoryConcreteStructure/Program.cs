@@ -22,13 +22,13 @@ namespace UnifiedTheoryConcreteStructure
             //Application.Run(App);
 
 
-            //CommonSection bill = new CommonSection(30, 330);
+            //CommonSection bill = new CommonSection(30, 400);
             //Console.WriteLine("毛截面面积Ac={0:F3}", bill.Ac);
             //Console.WriteLine("截面型心X={0:F3},Y={1:F3}", bill.PlasticCenterX, bill.PlasticCenterY);
-            //var RES = bill.SectionAnalysis();
+            //var RES = bill.SectionAnalysis();//轴压负值
             //Console.WriteLine("抗弯承载力Mu={0:F1}kNm", RES.Item2 * 1e-6);
 
-
+            ;
 
             //DoubleReinforcedRectSection theSection = new DoubleReinforcedRectSection()
             //{
@@ -53,7 +53,7 @@ namespace UnifiedTheoryConcreteStructure
 
             Console.Write("输入直径(mm):");
             double DD = double.Parse(Console.ReadLine());
-            Console.WriteLine("直径D={0}mm",DD);
+            Console.WriteLine("直径D={0}mm", DD);
 
             Console.Write("输入钢筋型心到边缘距离(mm):");
             double Cover = double.Parse(Console.ReadLine());
@@ -73,7 +73,7 @@ namespace UnifiedTheoryConcreteStructure
 
             ReinforcedCircleSection kitty = new ReinforcedCircleSection()
             {
-                
+
                 D = DD,
                 CoverT = Cover,
                 NumRebar = NumS,
@@ -85,7 +85,38 @@ namespace UnifiedTheoryConcreteStructure
             };
             var f = kitty.SectionAnalysis(Ns);
 
-            Console.WriteLine("Fu={0:F1}kN,Mu={1:F1}kNm.",f.Item1*1e-3,f.Item2*1e-6);
+            Console.WriteLine("Fu={0:F1}kN,Mu={1:F1}kNm.", f.Item1 * 1e-3, f.Item2 * 1e-6);
+
+
+            //foreach (int numNs in new[] { 14,10,8})
+            //{
+            //    int steps = 20;
+            //    for (int i = 0; i < steps; i++)
+            //    {
+            //        double Nx = 0 - 7000.0 / (steps - 1) * i;
+            //        ReinforcedCircleSection kitty = new ReinforcedCircleSection()
+            //        {
+            //            D = 1000,
+            //            CoverT = 75+16+10,
+            //            NumRebar = numNs,
+            //            MRebar = new Reinforcement(500, 20),
+            //            SRebar = new Reinforcement(500, 12),
+            //            Conc = new Concrete(30),
+            //            Sv = 100.0,
+            //        };
+            //        var f = kitty.SectionAnalysis(Nx * 1000);
+            //        Console.WriteLine("Fu={0:F1}kN,Mu={1:F1}kNm.", f.Item1 * 1e-3, f.Item2 * 1e-6);
+
+            //    }
+
+            //}
+
+
+            //DoubleReinforcedRectSection bill = new DoubleReinforcedRectSection(1200, 1500, 35, 1500 - 50, 10, 32, 500, 100, 6, 12, 500);
+            //bill.SectionAnalysis(-5942000);
+
+            //bill.ShearAnalysis();
+
             //kitty.SectionABCD();
 
 

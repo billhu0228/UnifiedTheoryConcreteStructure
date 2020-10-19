@@ -139,7 +139,7 @@ namespace UnifiedTheoryConcreteStructure
         /// <param name="h"></param>
         /// <param name="fcu">混凝土标号</param>
         /// <param name="ftd">混凝土设计拉应力</param>
-        /// <param name="dt">受拉钢筋型心力臂</param>
+        /// <param name="dt">受拉钢筋边缘力臂</param>
         /// <param name="nst">受拉钢筋根数</param>
         /// <param name="diat">受拉钢筋直径</param>
         /// <param name="fyt">受拉钢筋屈服强度</param>
@@ -378,8 +378,8 @@ namespace UnifiedTheoryConcreteStructure
                     var Mu = 0.85 * Conc.Fcu * B * fsa.Item2 * (DepthT - 0.5 * fsa.Item2) - CompRebar.As * fsa.Item1 * (DepthT - (H-DepthC));
                     Console.WriteLine(string.Format("#  a={0:F3}mm", fsa.Item2));
                     Console.WriteLine(string.Format("#  fs={0:F3}MPa", fsa.Item1));
-                    Console.WriteLine(string.Format("#  极限承载力Mu={1:F1}kNm",fsa.Item1,Mu/1e6));
-
+                    Console.WriteLine(string.Format("#  极限承载力Mu={1:F0}kNm",fsa.Item1,Mu/1e6));
+                    Console.WriteLine(string.Format("#  极限承载力φMu={1:F0}kNm", fsa.Item1, Mu / 1e6*0.75));
 
 
                 }

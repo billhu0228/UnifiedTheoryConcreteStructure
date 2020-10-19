@@ -1,0 +1,161 @@
+﻿<UserControl x:Class="UnifiedTheoryConcreteStructure.NewUI.MaterialControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UnifiedTheoryConcreteStructure.NewUI"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="590" d:DesignWidth="580">
+    
+    <!--<UserControl.DataContext>
+        --><!--声明创建一个NameViewModel的实例--><!--
+        <local:UTCSViewModel/>
+    </UserControl.DataContext>-->
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <StackPanel Height="590" Width="580">
+            <TextBlock FontSize="18" Margin="10,10,0,0"><Run Text="材料"/></TextBlock>
+            <GroupBox Header="混凝土" Style="{DynamicResource MaterialDesignGroupBox}"
+                materialDesign:ShadowAssist.ShadowDepth="Depth0"  UseLayoutRounding="True" SnapsToDevicePixels="True" Margin="8,8,8,0" >
+                <GroupBox.HeaderTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Canvas Width="20" Height="20">
+                                <materialDesign:PackIcon Kind="BallotRecountOutline" Height="20" Width="20" Foreground="{DynamicResource MainColor}"/>
+                            </Canvas>
+                            <TextBlock Margin="8,0,0,0" VerticalAlignment="Center"  Text="{Binding}" Foreground="Black" />
+                        </StackPanel>
+                    </DataTemplate>
+                </GroupBox.HeaderTemplate>
+                
+                <ScrollViewer>
+                    <StackPanel Orientation="Vertical" Width="514">
+                        <ComboBox  
+                            materialDesign:HintAssist.Hint="混凝土级别"  
+                            MinWidth="72"                          
+                            ItemsSource="{Binding SelConcreteList}" SelectedIndex="0" SelectedValuePath="Key"
+                            DisplayMemberPath="Value" SelectedValue="{Binding ConcID,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                            Style="{StaticResource MaterialDesignFloatingHintComboBox}" Margin="0">
+                            <ComboBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <VirtualizingStackPanel/>
+                                </ItemsPanelTemplate>
+                            </ComboBox.ItemsPanel>
+                        </ComboBox>
+                        <TextBlock Text="{Binding ConcreteName}"/>
+                    </StackPanel>
+
+                </ScrollViewer>
+                
+                
+                
+                
+                
+            </GroupBox>
+            <GroupBox Header="预应力" Style="{DynamicResource MaterialDesignGroupBox}"
+                materialDesign:ShadowAssist.ShadowDepth="Depth0"  UseLayoutRounding="True" SnapsToDevicePixels="True" Margin="8,0" >
+                <GroupBox.HeaderTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Canvas Width="20" Height="20">
+                                <materialDesign:PackIcon Kind="BallotRecountOutline" Height="20" Width="20" Foreground="{DynamicResource MainColor}"/>
+                            </Canvas>
+                            <TextBlock Margin="8,0,0,0" VerticalAlignment="Center"  Text="{Binding}" Foreground="Black" />
+                        </StackPanel>
+                    </DataTemplate>
+                </GroupBox.HeaderTemplate>
+                <ScrollViewer>
+
+                    <StackPanel Orientation="Vertical" Width="514">
+                        <ComboBox  
+                            materialDesign:HintAssist.Hint="预应力级别"  
+                            MinWidth="72"                          
+                            ItemsSource="{Binding SelPreRebarList}" SelectedIndex="0" SelectedValuePath="Key"
+                            DisplayMemberPath="Value" SelectedValue="{Binding PreRebarID,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                            Style="{StaticResource MaterialDesignFloatingHintComboBox}" Margin="0">
+                            <ComboBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <VirtualizingStackPanel/>
+                                </ItemsPanelTemplate>
+                            </ComboBox.ItemsPanel>
+                        </ComboBox>
+                        <TextBlock Text="{Binding PreRebarName}"/>
+                    </StackPanel>
+                </ScrollViewer>
+            </GroupBox>
+            <GroupBox Header="钢筋" Style="{DynamicResource MaterialDesignGroupBox}"
+                materialDesign:ShadowAssist.ShadowDepth="Depth0"  UseLayoutRounding="True" SnapsToDevicePixels="True" Margin="8,0" >
+                <GroupBox.HeaderTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Canvas Width="20" Height="20">
+                                <materialDesign:PackIcon Kind="BallotRecountOutline" Height="20" Width="20" Foreground="{DynamicResource MainColor}"/>
+                            </Canvas>
+                            <TextBlock Margin="8,0,0,0" VerticalAlignment="Center"  Text="{Binding}" Foreground="Black" />
+                        </StackPanel>
+                    </DataTemplate>
+                </GroupBox.HeaderTemplate>
+                <ScrollViewer>
+                    <StackPanel Orientation="Vertical" Width="514">
+                        <ComboBox  
+                            materialDesign:HintAssist.Hint="钢筋级别"  
+                            MinWidth="72"                          
+                            ItemsSource="{Binding SelRebarList}" SelectedIndex="0" SelectedValuePath="Key"
+                            DisplayMemberPath="Value" SelectedValue="{Binding RebarID,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                            Style="{StaticResource MaterialDesignFloatingHintComboBox}" Margin="0">
+                            <ComboBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <VirtualizingStackPanel/>
+                                </ItemsPanelTemplate>
+                            </ComboBox.ItemsPanel>
+                        </ComboBox>
+                        <TextBlock Text="{Binding RebarName}"/>
+                    </StackPanel>
+                </ScrollViewer>
+            </GroupBox>
+
+
+
+
+            <!--<Expander HorizontalAlignment="Stretch" Header="混凝土" Background="White" Foreground="{DynamicResource MainColor}">
+                <StackPanel Orientation="Horizontal" TextBlock.Foreground="{DynamicResource MaterialDesignBody}" Margin="24,8,24,16">
+                    <ComboBox  
+                        materialDesign:HintAssist.Hint="混凝土级别"  
+                        MinWidth="72"  
+                        Margin="16 0 0 0"  
+                        ItemsSource="{Binding LongListToTestComboVirtualization}"
+                        Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                        <ComboBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel />
+                            </ItemsPanelTemplate>
+                        </ComboBox.ItemsPanel>
+                    </ComboBox>
+
+
+                    <TextBox Text="{Binding Name}" TextWrapping="Wrap"/>
+                </StackPanel>
+            </Expander>
+            <Expander HorizontalAlignment="Stretch" Header="钢筋" Background="White">
+                <StackPanel Orientation="Vertical"
+                    TextBlock.Foreground="{DynamicResource MaterialDesignBody}"
+                    Margin="24,8,24,16">
+                    <TextBlock Text="Your Content" />
+                    <TextBlock Opacity=".68" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                        TextWrapping="Wrap"/>
+                </StackPanel>
+            </Expander>
+            <Expander HorizontalAlignment="Stretch" Header="预应力筋" Background="White">
+                <StackPanel Orientation="Vertical"
+                    TextBlock.Foreground="{DynamicResource MaterialDesignBody}"
+                    Margin="24,8,24,16">
+                    <TextBlock Text="Your Content" />
+                    <TextBlock Opacity=".68" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                        TextWrapping="Wrap"/>
+                </StackPanel>
+            </Expander>-->
+
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

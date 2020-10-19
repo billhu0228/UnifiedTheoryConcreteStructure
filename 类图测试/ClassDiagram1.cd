@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access">
+  <Class Name="类图测试.RCItem">
+    <Position X="12" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RCItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="类图测试.CapBeam">
+    <Position X="6.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAAQAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CapBeam.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="类图测试.PrecastBox">
+    <Position X="17.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>PrecastBox.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="类图测试.Pier">
+    <Position X="8.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Pier.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="类图测试.Footing">
+    <Position X="15.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Footing.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="类图测试.Pile">
+    <Position X="11" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Pile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="类图测试.PileCap">
+    <Position X="13.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PileCap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="类图测试.OnePointItem">
+    <Position X="11" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAIABAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>VerticalItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="类图测试.TwoItem">
+    <Position X="17.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>TwoItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="类图测试.RebarInfo">
+    <Position X="8.5" Y="9.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Public" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAACAkAAAABAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>RebarInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="类图测试.ConcreteInfo">
+    <Position X="6.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ConcreteInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="类图测试.MaterialInfo">
+    <Position X="8.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MaterialInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="类图测试.PrestressInfo">
+    <Position X="10.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PrestressInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="类图测试.RebarTypeEnum" Collapsed="true">
+    <Position X="20.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAADACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RebarTypeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>

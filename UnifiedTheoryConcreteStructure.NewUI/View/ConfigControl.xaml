@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="UnifiedTheoryConcreteStructure.NewUI.ConfigControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UnifiedTheoryConcreteStructure.NewUI"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="590" d:DesignWidth="580    ">
+    <StackPanel>
+        <TextBlock FontSize="18" Margin="10,10,0,0"><Run Text="配置"/></TextBlock>
+        <Expander HorizontalAlignment="Stretch" Header="规范" Background="White" Foreground="{DynamicResource MainColor}" IsExpanded="True">
+            <StackPanel Orientation="Horizontal" TextBlock.Foreground="{DynamicResource MaterialDesignBody}" Margin="24,8,24,16">
+                <ComboBox  materialDesign:HintAssist.Hint="规范体系"  Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                    <ComboBoxItem Content="JTG"/>
+                    <ComboBoxItem Content="AASHTO LRFD"/>
+                    <ComboBoxItem Content="BS5400"/>
+                </ComboBox>
+
+                <TextBox Text="{Binding Name}" TextWrapping="Wrap"/>
+            </StackPanel>
+        </Expander>
+    </StackPanel>
+</UserControl>

@@ -1,0 +1,213 @@
+﻿<UserControl x:Class="UnifiedTheoryConcreteStructure.NewUI.SectionControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UnifiedTheoryConcreteStructure.NewUI"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="590" d:DesignWidth="580">
+
+    <UserControl.Resources>
+        <local:LoadTypeToBoolConverter x:Key="LoadTypeToBoolConverter"></local:LoadTypeToBoolConverter>
+    </UserControl.Resources>
+
+
+    <ScrollViewer  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <ScrollViewer.Content>
+            <StackPanel>
+                <TextBlock FontSize="18" Margin="10,10,0,0"><Run Text="截面"/></TextBlock>
+                <GroupBox Header="任意截面" Style="{DynamicResource MaterialDesignGroupBox}"
+                materialDesign:ShadowAssist.ShadowDepth="Depth0"  UseLayoutRounding="True" SnapsToDevicePixels="True" Margin="8,8,8,0" >
+                    <GroupBox.HeaderTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Canvas Width="20" Height="20">
+                                    <materialDesign:PackIcon Kind="BallotRecountOutline" Height="20" Width="20" Foreground="{DynamicResource MainColor}"/>
+                                </Canvas>
+                                <TextBlock Margin="8,0,0,0" VerticalAlignment="Center"  Text="{Binding}" Foreground="Black" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </GroupBox.HeaderTemplate>
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical" >
+                            <DataGrid     
+                                        ItemsSource="{Binding BarCollection}"
+                                        CanUserSortColumns="True"
+                                        CanUserAddRows="False"                                        
+                                        materialDesign:DataGridAssist.CellPadding="4 2 2 2"
+                                        materialDesign:DataGridAssist.ColumnHeaderPadding="4 2 2 2" Margin="0,0,-0.001,0" />
+                            <DataGrid     
+                                        ItemsSource="{Binding PreBarCollection}"
+                                        CanUserSortColumns="True"
+                                        CanUserAddRows="False"                                        
+                                        materialDesign:DataGridAssist.CellPadding="4 2 2 2"
+                                        materialDesign:DataGridAssist.ColumnHeaderPadding="4 2 2 2" Margin="0,0,-0.001,0" />
+                            <DataGrid     
+                                        ItemsSource="{Binding SectionCollection}"
+                                        CanUserSortColumns="True"
+                                        CanUserAddRows="False"                                        
+                                        materialDesign:DataGridAssist.CellPadding="4 2 2 2"
+                                        materialDesign:DataGridAssist.ColumnHeaderPadding="4 2 2 2" Margin="0,0,-0.001,0" />
+                            <StackPanel Orientation="Horizontal" >
+                                <Button
+                                Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                ToolTip="Resource name: MaterialDesignRaisedLightButton" Background="AliceBlue" BorderBrush="AliceBlue"
+                                Command="{Binding GetGetGet}" Content="拾取截面（AutoCAD2020）" />
+                                <Button
+                                Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                ToolTip="Resource name: MaterialDesignRaisedLightButton" Background="AliceBlue" BorderBrush="AliceBlue"
+                                Command="{Binding GetMsg}" Content="计算" />
+                            </StackPanel>
+                        </StackPanel>
+
+                    </ScrollViewer>
+                </GroupBox>
+
+
+
+                <GroupBox Header="荷载参数" Style="{DynamicResource MaterialDesignGroupBox}"
+                    materialDesign:ShadowAssist.ShadowDepth="Depth0"  UseLayoutRounding="True" SnapsToDevicePixels="True" Margin="8,8,8,0" >
+                    <GroupBox.HeaderTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Canvas Width="20" Height="20">
+                                    <materialDesign:PackIcon Kind="BallotRecountOutline" Height="20" Width="20" Foreground="{DynamicResource MainColor}"/>
+                                </Canvas>
+                                <TextBlock Margin="8,0,0,0" VerticalAlignment="Center"  Text="{Binding}" Foreground="Black" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </GroupBox.HeaderTemplate>
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Vertical"   HorizontalAlignment="Left">
+                                <StackPanel    Orientation="Horizontal"    Margin="2">
+                                    <RadioButton x:Name="Nx" IsChecked="{Binding CurLoadType,Converter={StaticResource LoadTypeToBoolConverter},ConverterParameter=0}" Content="恒定轴力"/>
+                                    <RadioButton x:Name="My" IsChecked="{Binding CurLoadType,Converter={StaticResource LoadTypeToBoolConverter},ConverterParameter=1}" Content="恒定弯矩"/>
+                                    <RadioButton x:Name="Ec" IsChecked="{Binding CurLoadType,Converter={StaticResource LoadTypeToBoolConverter},ConverterParameter=2}" Content="恒定偏心距"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBox  materialDesign:HintAssist.Hint="轴力(kN)"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                                           IsEnabled="{Binding IsChecked , ElementName=Nx}" Margin="4,0,0,0"  />
+                                    <CheckBox IsChecked="{Binding IsCompression}" Background="{DynamicResource MainColor}"  Content="压力"  />
+                                    <TextBox  materialDesign:HintAssist.Hint="弯矩(kNm)"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"                                               
+                                        IsEnabled="{Binding IsChecked, ElementName=My}"/>
+                                    <CheckBox IsChecked="{Binding IsVertMoment}" Background="{DynamicResource MainColor}"  Content="竖向"  />
+                                    <TextBox  materialDesign:HintAssist.Hint="偏心率"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"                                               
+                                        IsEnabled="{Binding IsChecked, ElementName=Ec}"/>
+                                </StackPanel>
+                                <TextBlock Text="{Binding LoadTypeName}"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                    </ScrollViewer>
+                </GroupBox>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <Expander HorizontalAlignment="Stretch" Header="任意截面" Background="White"  Foreground="{DynamicResource MainColor}" IsExpanded="True">
+                    <StackPanel Orientation="Vertical"/>
+                </Expander>
+                <Expander HorizontalAlignment="Stretch" Header="圆截面" Background="White">
+                    <StackPanel Margin="24,0" Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal" TextBlock.Foreground="{DynamicResource MaterialDesignBody}" Margin="0,0,0,10">
+                            <materialDesign:Chip  Content="截面尺寸"  Icon="D" IconForeground="{DynamicResource MainColor}" IconBackground="#e5f1fb" Margin="0,0,5,0" />
+                            <TextBox  materialDesign:HintAssist.Hint="直径(mm)"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  PreviewTextInput="NumberValidationTextBox"/>
+                            <TextBox  materialDesign:HintAssist.Hint="保护层厚度(mm)"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" PreviewTextInput="NumberValidationTextBox"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" TextBlock.Foreground="{DynamicResource MaterialDesignBody}" Margin="0,0,0,10" >
+                            <materialDesign:Chip  Content="钢筋布置"  Icon="钢"  Margin="0,0,5,0"/>
+                            <TextBox  materialDesign:HintAssist.Hint="主筋类别(mm)"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  PreviewTextInput="NumberValidationTextBox"/>
+                            <TextBox  materialDesign:HintAssist.Hint="主筋根数(mm)"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  PreviewTextInput="NumberValidationTextBox"/>
+                            <ComboBox  materialDesign:HintAssist.Hint="主筋直径(mm)"
+                               ItemsSource="{Binding BarDia}" SelectedItem="{Binding SellectDia}" 
+                               Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                                <ComboBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <VirtualizingStackPanel />
+                                    </ItemsPanelTemplate>
+                                </ComboBox.ItemsPanel>
+                            </ComboBox>
+
+                            <CheckBox    Style="{StaticResource MaterialDesignCheckBox}">是否双排钢筋</CheckBox>
+                        </StackPanel>
+                    </StackPanel>
+                </Expander>
+                <Expander HorizontalAlignment="Stretch" Header="矩形截面" Background="White">
+                    <StackPanel Margin="24,0" Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal" TextBlock.Foreground="{DynamicResource MaterialDesignBody}" Margin="0,0,0,10">
+                            <materialDesign:Chip  Content="截面尺寸"  Icon="D" IconForeground="{DynamicResource MainColor}" IconBackground="#e5f1fb" Margin="0,0,5,0" />
+                            <TextBox  materialDesign:HintAssist.Hint="直径(mm)"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  PreviewTextInput="NumberValidationTextBox"/>
+                            <TextBox  materialDesign:HintAssist.Hint="保护层厚度(mm)"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" PreviewTextInput="NumberValidationTextBox"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" TextBlock.Foreground="{DynamicResource MaterialDesignBody}" Margin="0,0,0,10" >
+                            <materialDesign:Chip  Content="钢筋布置"  Icon="钢"  Margin="0,0,5,0"/>
+                            <TextBox  materialDesign:HintAssist.Hint="主筋类别(mm)"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  PreviewTextInput="NumberValidationTextBox"/>
+                            <TextBox  materialDesign:HintAssist.Hint="主筋根数(mm)"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  PreviewTextInput="NumberValidationTextBox"/>
+                            <ComboBox  materialDesign:HintAssist.Hint="主筋直径(mm)"
+                               ItemsSource="{Binding BarDia}" SelectedItem="{Binding SellectDia}" 
+                               Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                                <ComboBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <VirtualizingStackPanel />
+                                    </ItemsPanelTemplate>
+                                </ComboBox.ItemsPanel>
+                            </ComboBox>
+
+                            <CheckBox    Style="{StaticResource MaterialDesignCheckBox}">是否双排钢筋</CheckBox>
+                        </StackPanel>
+                    </StackPanel>
+                </Expander>
+                <Expander HorizontalAlignment="Stretch" Header="AASHTO-DBT" Background="White">
+                    <GroupBox Header="DeckBulbTee(AASHTO)" Style="{DynamicResource MaterialDesignGroupBox}"
+                    materialDesign:ShadowAssist.ShadowDepth="Depth0"  UseLayoutRounding="True" SnapsToDevicePixels="True" Margin="8,8,8,0" >
+                        <GroupBox.HeaderTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Canvas Width="20" Height="20">
+                                        <materialDesign:PackIcon Kind="BallotRecountOutline" Height="20" Width="20" Foreground="{DynamicResource MainColor}"/>
+                                    </Canvas>
+                                    <TextBlock Margin="8,0,0,0" VerticalAlignment="Center"  Text="{Binding}" Foreground="Black" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </GroupBox.HeaderTemplate>
+                        <ScrollViewer>
+                            <StackPanel Orientation="Vertical">
+                                <StackPanel Orientation="Vertical"   HorizontalAlignment="Left">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBox  materialDesign:HintAssist.Hint="左上翼缘wleft(mm)"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                                        <TextBox  materialDesign:HintAssist.Hint="右上翼缘wright(mm)"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                                        <TextBox  materialDesign:HintAssist.Hint="总高h(mm)"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                                        <TextBox  materialDesign:HintAssist.Hint="马蹄宽w2(mm)"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                                        <TextBox  materialDesign:HintAssist.Hint="腹板厚t(mm)"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBox  materialDesign:HintAssist.Hint="上翼缘厚t1(mm)"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                                        <TextBox  materialDesign:HintAssist.Hint="马蹄厚t2(mm)"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                                        <TextBox  materialDesign:HintAssist.Hint="马蹄渐变高(mm)"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                                        <TextBox  materialDesign:HintAssist.Hint="上翼缘渐变高(mm)"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                                        <TextBox  materialDesign:HintAssist.Hint="上翼缘倒角(mm)"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+
+                        </ScrollViewer>
+                    </GroupBox>
+                </Expander>
+
+            </StackPanel>
+        </ScrollViewer.Content>
+    </ScrollViewer>
+
+
+</UserControl>
